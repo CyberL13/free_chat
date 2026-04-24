@@ -1,0 +1,53 @@
+EXTENDED PROPRIETARY LICENSE AGREEMENT
+
+Copyright © [Year, Name]
+All rights reserved.
+
+This Extended Proprietary License Agreement (“Agreement”) governs all access to, viewing of, and interaction with the software, source code, binaries, documentation, digital assets, configuration files, and any other materials contained within this repository (collectively, the “Software”). By accessing or viewing the Software, you acknowledge that no rights are granted to you under this Agreement.
+
+1. OWNERSHIP AND INTELLECTUAL PROPERTY
+The Software is the exclusive property of the copyright holder. All intellectual property rights, including but not limited to copyrights, trade secrets, and any related proprietary rights, remain solely and fully vested in the copyright holder. No transfer, assignment, license, or permission is granted, whether expressly, implicitly, or through estoppel.
+
+2. ABSOLUTE RESTRICTIONS
+Without a formal, written, and physically signed agreement issued directly by the copyright holder, you are strictly and unconditionally prohibited from performing any of the following actions:
+
+- Copying, reproducing, duplicating, or storing the Software in any form
+- Modifying, altering, translating, adapting, or creating derivative works
+- Distributing, publishing, sharing, sublicensing, selling, leasing, or otherwise making the Software available to any third party
+- Using the Software for personal, private, academic, commercial, research, or any other purpose
+- Hosting, deploying, or displaying the Software on any server, platform, website, or service
+- Reverse engineering, decompiling, disassembling, analyzing, or attempting to extract the source code, structure, algorithms, or underlying logic
+- Incorporating any portion of the Software into any other project, product, or system
+- Circumventing, attempting to circumvent, or assisting others in circumventing any technical, legal, or access restrictions
+
+Any attempt to engage in these activities constitutes an immediate and material breach of this Agreement.
+
+3. NO LICENSE, NO RIGHTS, NO PERMISSIONS
+Access to this repository does not grant any rights whatsoever. No license—express, implied, statutory, or otherwise—is provided. The Software may not be used, copied, or referenced for any purpose. Viewing the Software does not constitute permission to interact with it beyond passive observation.
+
+4. CONFIDENTIALITY AND NON-DISCLOSURE
+The Software may contain confidential, proprietary, or unpublished information. You are prohibited from disclosing, describing, referencing, or communicating any portion of the Software to any individual, organization, or entity without explicit written authorization.
+
+5. DISCLAIMER OF WARRANTIES
+The Software is provided strictly “as is,” without any warranties of any kind, whether express or implied. This includes, but is not limited to, warranties of merchantability, fitness for a particular purpose, accuracy, reliability, or non-infringement. The copyright holder makes no guarantees regarding the completeness, functionality, or suitability of the Software.
+
+6. LIMITATION OF LIABILITY
+To the maximum extent permitted by applicable law, the copyright holder shall not be liable for any direct, indirect, incidental, consequential, special, exemplary, or punitive damages arising from or related to unauthorized access, use, or distribution of the Software.
+
+7. ENFORCEMENT AND REMEDIES
+The copyright holder reserves the right to pursue all legal and equitable remedies available, including but not limited to:
+- Civil litigation
+- Monetary damages
+- Injunctive relief
+- Takedown requests
+- Reporting violations to relevant platforms or authorities
+
+Each unauthorized use constitutes a separate and actionable violation.
+
+8. TERMINATION
+Your right to view the Software is automatically revoked upon any breach of this Agreement. Upon termination, you must immediately cease all access and destroy any copies, notes, or materials derived from the Software.
+
+9. PERMISSION REQUESTS
+Any request for permission to use the Software must be submitted directly to the copyright holder. Only a written agreement bearing the physical signature of the copyright holder constitutes valid authorization. Electronic, verbal, or informal permissions are invalid.
+
+END OF AGREEMENT
