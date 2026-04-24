@@ -1,6 +1,6 @@
 EXTENDED PROPRIETARY LICENSE AGREEMENT
 
-Copyright © [Year, Name]
+Copyright © 2026 Free Chat
 All rights reserved.
 
 This Extended Proprietary License Agreement (“Agreement”) governs all access to, viewing of, and interaction with the software, source code, binaries, documentation, digital assets, configuration files, and any other materials contained within this repository (collectively, the “Software”). By accessing or viewing the Software, you acknowledge that no rights are granted to you under this Agreement.
