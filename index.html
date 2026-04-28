@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Untitled</title>
+    
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>MQTT + OpenPGP (Konsole)</title>
+
+    <!-- Libraries -->
+    <script src="https://unpkg.com/openpgp@5.11.1/dist/openpgp.min.js"></script>
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+</head>
+<body>
+<script>
+    console.log("Starte…");
+
+    // ============================
+    // SHA‑256 Helper
+    // ============================
+    async function sha256(str) {
+        const data = new TextEncoder().encode(str);
+        const hash = await crypto.subtle.digest("SHA-256", data);
+        return [...new Uint8Array(hash)]
+            .map(b => b.toString(16).padStart(2, "0"))
+            .join("");
+    }
+
+    // ============================
+    // KONFIGURATION
+    // ============================
+    const ROOM   = "dh6f4";
+    const SECRET = "hdf";
+    const HOST   = "wss://broker.emqx.io:8084/mqtt";
+
+    let channel, cypher_key, client;
+
+    // ============================
+    // VERBINDUNG STARTEN
+    // ============================
+    async function login() {
+        console.log("Login…");
+
+        channel    = await sha256(ROOM);
+        cypher_key = SECRET;
+
+        const clientId = "mqttjs_" + await sha256("client");
+
+        const options = {
+            keepalive: 180,
+            clientId,
+            protocolId: "MQTT",
+            protocolVersion: 4,
+            clean: true,
+            reconnectPeriod: 1000,
+            connectTimeout: 30000
+        };
+
+        client = mqtt.connect(HOST, options);
+
+        client.on("connect", () => {
+            console.log("Verbunden:", clientId);
+            console.log("Topic:", channel);
+
+            client.subscribe(channel, { qos: 1 }, err => {
+                if (err) return console.error("Subscribe Fehler:", err);
+
+                console.log("Subscribed.");
+
+                // Testnachricht senden
+                sendEncrypted("l13//ohio");
+            });
+        });
+
+        client.on("error", err => console.error("MQTT Fehler:", err));
+        client.on("reconnect", () => console.log("Reconnecting…"));
+
+        client.on("message", async (topic, payload) => {
+            try {
+                const encryptedMessage = await openpgp.readMessage({
+                    binaryMessage: payload
+                });
+
+                const decrypted = await openpgp.decrypt({
+                    message: encryptedMessage,
+                    passwords: [cypher_key],
+                    format: "binary"
+                });
+
+                let text = new TextDecoder().decode(decrypted.data);
+                if (text === last_msg) {
+                  console.log("Eigene Nachricht empfangen");
+                } else {
+                  console.log("Empfangen:", text);
+                  if (text === "Master_Futzi//MasterFutzi.gugaman") {
+                    sendEncrypted('{"username": "Felix der Fake Sigma", "isFound": true, "obj": "Master_Futzi//MasterFutzi.gugaman"}')
+                  } else if (text === "cyber//l13"){
+                    sendEncrypted('{"username": "OWNER", "isFound": true, "obj": "cyber//l13"}')
+                   } else if (text === "skibidi//ohio"){
+                    sendEncrypted('{"username": "Ohioman", "isFound": true, "obj": "skibidi//ohio"}') 
+                  } else {
+                    let data = {
+    username: "notFound",
+    isFound: false,
+    obj: text
+};
+                  
+                
+                    let jsonString = JSON.stringify(data);
+                    sendEncrypted(jsonString)
+
+
+                  }
+                }
+
+            } catch (err) {
+                console.error("Decrypt Fehler:", err);
+            }
+        });
+    }
+
+    // ============================
+    // SENDEN (verschlüsselt)
+    // ============================
+    async function sendEncrypted(text) {
+        if (!client || !client.connected) {
+            console.log("Nicht verbunden.");
+            return;
+        }
+        last_msg = text;
+        const msg = await openpgp.createMessage({
+            binary: new TextEncoder().encode(text)
+        });
+
+        const encrypted = await openpgp.encrypt({
+            message: msg,
+            passwords: [cypher_key],
+            format: "binary"
+        });
+
+        client.publish(channel, encrypted, { qos: 1 }, err => {
+            if (err) console.error("Publish Fehler:", err);
+            else console.log("Gesendet:", text);
+        });
+    }
+
+    // ============================
+    // START
+    // ============================
+    login();
+</script>
+</body>
+</html>
+    
+  </body>
+  
+</html>
