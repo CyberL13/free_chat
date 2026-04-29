@@ -454,6 +454,9 @@
             login_btn.disabled = false
             html_user_id.disabled = false
             html_password_id.disabled = false
+      client.unsubscribe(channel, {}, () => {
+                        client.end()
+                    })
             alert("User not found")
     }
     }
