@@ -611,7 +611,7 @@
                 container.classList.add('me');
             } else if (obj.u === "") {
                 container.classList.add('sys');
-            } else if (obj.u === "OWNER" || html_your_id.value.includes("DEV") || html_your_id.value.includes("ADMIN")) {
+            } else if (obj.u === "OWNER" || obj.u.includes("DEV") || obj.u.includes("ADMIN")) {
                container.classList.add('pro');
             } else if (html_your_id.value.includes("PRO")) {
                container.classList.add('sigma');
